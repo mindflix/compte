@@ -4,14 +4,14 @@ from flask import Blueprint, flash, g, redirect, render_template, request, sessi
 from werkzeug.security import check_password_hash, generate_password_hash
 from project.db import get_db
 
-auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
+auth_bp = Blueprint('auth', __name__)
 
 
 @auth_bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form.get('username')
+        password = request.form.get('password')
         db = get_db()
         error = None
         user = db.execute(
@@ -79,7 +79,7 @@ def load_logged_in_user():
 @auth_bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('home_bp.index'))
+    return redirect(url_for('index'))
 
 
 def login_required(view):

@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, g, abort
-from flask import current_app as app
 from project.db import get_db
 from project.auth import login_required
 
@@ -7,7 +6,7 @@ from project.auth import login_required
 task_bp = Blueprint('task', __name__)
 
 
-@task_bp.route('/task')
+@task_bp.route('/')
 @login_required
 def task():
     db = get_db()
@@ -19,12 +18,15 @@ def task():
     return render_template('task/index.html', page='task', tasks=tasks)
 
 
-@task_bp.route('/task/create', methods=('GET', 'POST'))
+@task_bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
+
+    create = True
+
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        title = request.form.get('title')
+        body = request.form.get('body')
         error = None
 
         if not title:
@@ -42,18 +44,20 @@ def create():
             db.commit()
             return redirect(url_for('task'))
 
-    return render_template('task/create.html')
+    return render_template('task/update.html', create=create)
 
 
-@task_bp.route('/task/<int:id>/update', methods=('GET', 'POST'))
+@task_bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
+
+    create = False
 
     task = get_post(id)
 
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        title = request.form.get('title')
+        body = request.form.get('body')
         error = None
 
         if not title:
@@ -71,7 +75,17 @@ def update(id):
             db.commit()
             return redirect(url_for('task'))
 
-    return render_template('task/update.html', task=task)
+    return render_template('task/update.html', task=task, create=create)
+
+
+@task_bp.route('/<int:id>/delete', methods=('POST',))
+@login_required
+def delete(id):
+    get_post(id)
+    db = get_db()
+    db.execute('DELETE FROM task WHERE id = ?', (id,))
+    db.commit()
+    return redirect(url_for('task'))
 
 
 def get_post(id, check_author=True):
@@ -89,13 +103,3 @@ def get_post(id, check_author=True):
         abort(403)
 
     return task
-
-
-@task_bp.route('/task/<int:id>/delete', methods=('POST',))
-@login_required
-def delete(id):
-    get_post(id)
-    db = get_db()
-    db.execute('DELETE FROM task WHERE id = ?', (id,))
-    db.commit()
-    return redirect(url_for('task'))

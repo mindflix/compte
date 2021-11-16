@@ -12,19 +12,19 @@
 </head>
 <body>
   <main>
-    {% set navigation = [('index', 'Accueil'), ('task', 'Tâches'), ('counting', 'Comptes')] %}
-
-      <div class="container-fluid">
-        <div class="offcanvas offcanvas-start p-3" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <h1 class="offcanvas-title" id="offcanvasNavbarLabel">34 St-Catherine</h1>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="nav nav-pills flex-column mb-auto fs-5">
+    
+    <div class="container-fluid">
+      <div class="offcanvas offcanvas-start p-3" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h1 class="offcanvas-title" id="offcanvasNavbarLabel">34 St-Catherine</h1>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav nav-pills flex-column mb-auto fs-5">
+              {% set navigation = [('index', 'Accueil'), ('task', 'Tâches'), ('counting', 'Comptes')] %}
               {% for k, v in navigation %}
                 <li class="nav-item">
-                  <a {% if k in page %}class="nav-link active"{% endif %} href="{{ url_for(k) }}" class="nav-link text-dark">{{ v }}</a>
+                  <a {% if k in request.endpoint %}class="nav-link active"{% endif %} href="{{ url_for(k) }}" class="nav-link text-dark">{{ v }}</a>
                 </li>
               {% endfor %}
             </ul>

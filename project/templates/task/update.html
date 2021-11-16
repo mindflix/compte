@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
 
 {% block header %}
-Mettre à jour
+{% if create == False %}Mettre à jour la tâche{% else %}Créer une nouvelle tâche{% endif %}
 {% endblock %}
 
 {% block content %}
-    <div class="col-xs-12 col-md-6 col-lg-4 mt-3">
+    <div class="mt-3" style="max-width: 500px">
         <form method="post">
             <a class="btn btn-outline-primary mb-3" href="{{ url_for('task') }}" role="button">Revenir à l'ensemble des tâches</a>
-            <div class="mb-3">
-                <label for="title" class="form-label">Titre</label>
-                <input class="form-control" placeholder="Entrer un titre..." name="title" id="title" value="{{ request.form['title'] or task['title'] }}" required>
+            <div class="mb-3 form-floating">
+                <input class="form-control" placeholder="Entrer un titre..." name="title" id="title" value="{% if create == False %}{{ request.form['title'] or task['title'] }}{% else %}{{ request.form['title'] }}{% endif %}" required>
+                <label for="title">Titre</label>
             </div>
-            <div class="mb-3">
-                <label for="body" class="form-label">Description</label>
-                <textarea class="form-control" placeholder="Entrer une description de cette tâche..." name="body" id="body" style="height: 100px">{{ request.form['body'] or task['body'] }}</textarea>
+            <div class="mb-3 form-floating">
+                <textarea class="form-control" placeholder="Entrer une description de cette tâche..." name="body" id="body" style="height: 100px">{% if create == False %}{{ request.form['body'] or task['body'] }}{% else %}{{ request.form['body'] }}{% endif %}</textarea>
+                <label for="body">Description</label>
             </div>
-            <div class="d-grid mb-2">
-                <button type="submit" class="btn btn-primary">Modifier</button>
-            </div>
-        </form>
-        <form class="d-grid" action="{{ url_for('task.delete', id=task['id']) }}" method="post">
-            <input class="btn btn-outline-danger" type="submit" value="Supprimer" onclick="return confirm('Vous êtes sûr ?');">
-        </form>
+            <div class="d-flex">
+                <button type="submit" class="col-5 btn btn-lg btn-primary">{% if create == False %}Modifier{% else %}Créer{% endif %}</button>
+                {% if create == False %}
+                <input class="ms-3 col-5 btn btn-lg btn-outline-danger" type="submit" value="Supprimer" form="deleteForm" onclick="return confirm('Vous êtes sûr ?');">
+                {% endif %}
+                </div>
+            </form>
+            {% if create == False %}
+            <form id="deleteForm" action="{{ url_for('task.delete', id=task['id']) }}" method="post"></form>
+            {% endif %}
     </div>
     
 {% endblock %}

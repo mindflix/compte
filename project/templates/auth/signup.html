@@ -21,7 +21,7 @@
               <label for="password">Mot de passe</label>
             </div>
             <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">S'inscrire</button>
-            <small class="text-muted">En cliquant sur S'inscrire, vous acceptez les termes.</small>
+            <small class="text-muted">Vous avez déjà un compte? <a href="{{ url_for('auth.login') }}">Se connecter</a></small>
           </form>
         </div>
       </div>

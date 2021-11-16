@@ -20,13 +20,8 @@
               <input type="password" class="form-control rounded-4" name="password" id="password" placeholder="Password" required>
               <label for="password">Mot de passe</label>
             </div>
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Connexion auto
-                </label>
-            </div>
             <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Se connecter</button>
+            <small class="text-muted">Vous n'avez pas encore de compte? <a href="{{ url_for('auth.signup') }}">S'inscrire</a></small>
           </form>
         </div>
       </div>
