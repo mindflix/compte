@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="modal modal-signin position-static d-block py-5 " tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content rounded-5 shadow ">
+        <div class="modal-header p-5 pb-4 border-bottom-0 ">
+          <!-- <h5 class="modal-title">Modal title</h5> -->
+          <h2 class="fw-bold mb-0 ">S'inscrire gratuitement</h2>
+        </div>
+  
+        <div class="modal-body p-5 pt-0">
+          <form class="" method="post">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control rounded-4" name="username" id="username" placeholder="name@example.com" required>
+              <label for="username">Identifiant</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-4" name="password" id="password" placeholder="Password" required>
+              <label for="password">Mot de passe</label>
+            </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">S'inscrire</button>
+            <small class="text-muted">En cliquant sur S'inscrire, vous acceptez les termes.</small>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

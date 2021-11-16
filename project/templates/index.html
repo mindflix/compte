@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+  {% if g.user %}
+  <h1 class="mb-0">Bienvenue {{ g.user['username'].capitalize() }} au 34 St-Catherine</h1>
+  {% else %}
+  <h1 class="mb-0">Bienvenue au 34 St-Catherine</h1>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+<main>
+  <div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Se créer un compte</h1>
+        <p class="col-md-8 fs-4">Ne pas s'inscrire si tu ne fais pas partie de l'équipe.</p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('auth.signup') }}" role="button">S'inscrire</a>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Consulter les Tâches</h2>
+          <p>Pour enfin gagner contre votre mari.</p>
+          <button class="btn btn-outline-light" type="button">Consulter</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Faire les Comptes</h2>
+          <p>Pour réaliser que vous n'avez plus d'argent. (et s'il en reste, emmène-moi à sephora, je saurai l'utiliser).</p>
+          <button class="btn btn-outline-secondary" type="button">Ajouter vos dépenses</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; 2021
+    </footer>
+  </div>
+</main>
+
+{% endblock %}
