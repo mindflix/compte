@@ -55,18 +55,18 @@ $ pip install -r requirements.txt
 
 Cela permettra d'installer les modules requis pour le fonctionnement de l'app, dont Flask.
 
-### Lancement de l'App :
+## Lancement de l'App
 
 Pour l'instant, l'app est en développement, il faut initialiser 2 paramètres pour la lancer correctement.
 
-#### Initialisation des variables
+### Initialisation des variables
 
 ```console
 $ export FLASK_APP=project
 $ export FLASK_ENV=development
 ```
 
-#### Lancer
+### Lancer
 
 ```console
 $ flask run
