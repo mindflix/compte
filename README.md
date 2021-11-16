@@ -5,24 +5,24 @@
 
 ## Installation
 
-### Cloner le git dans un répertoire :
+### Cloner le git dans un répertoire
 
 ```console
-$ git clone https://github.com/mindflix/compte
+git clone https://github.com/mindflix/compte
 ```
 
-### Vérifier que Python est bien installé à la version 3.9 :
+### Vérifier que Python est bien installé à la version 3.9
 
 ```console
-$ python3 --version
+python3 --version
 ```
 
-### Créer un environnement virtuel :
+### Créer un environnement virtuel
 
 #### Installation de l'outil
 
 ```console
-$ pip install virtualenv
+pip install virtualenv
 ```
 
 #### Création de l'environnement (à la racine)
@@ -35,22 +35,22 @@ Cela permettra de générer un dossier "env" à la racine.
 
 #### Activation de l'environnement
 
-- Pour l'activer :
+- Pour l'activer
 
 ```console
-$ source env/bin/activate
+source env/bin/activate
 ```
 
-- Pour le désactiver :
+- Pour le désactiver
 
 ```console
-(env) $ deactivate
+deactivate
 ```
 
-### Installer les dépendances (avec l'environnement actif !) :
+### Installer les dépendances (avec l'environnement actif !)
 
 ```console
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Cela permettra d'installer les modules requis pour le fonctionnement de l'app, dont Flask.
@@ -62,14 +62,14 @@ Pour l'instant, l'app est en développement, il faut initialiser 2 paramètres p
 ### Initialisation des variables
 
 ```console
-$ export FLASK_APP=project
-$ export FLASK_ENV=development
+export FLASK_APP=project
+export FLASK_ENV=development
 ```
 
 ### Lancer
 
 ```console
-$ flask run
+flask run
 ```
 
 ## Aller plus loin
@@ -77,5 +77,5 @@ $ flask run
 ### Réinitialisation de la base de données
 
 ```console
-$ flask init-db
+flask init-db
 ```
