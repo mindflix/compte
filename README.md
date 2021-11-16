@@ -71,3 +71,11 @@ $ export FLASK_ENV=development
 ```console
 $ flask run
 ```
+
+## Aller plus loin
+
+### Réinitialisation de la base de données
+
+```console
+$ flask init-db
+```
