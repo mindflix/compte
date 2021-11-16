@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1 class="mb-0">Tâches</h1>
+Tâches
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,8 @@
         <button type="button" class="btn btn-outline-primary">Modifier</button>
         <button type="button" class="btn btn-outline-primary">Supprimer</button>
     </div>
-    <div class="list-group">
+    <div class="overflow-scroll" style="max-height: 80vh;">
+      <div class="list-group">
         {% for task in tasks %}
         <a href="#" class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
@@ -22,4 +23,5 @@
           <small class="text-muted">{{ task['username'] }}</small>
         </a>
         {% endfor %}
+    </div>
 {% endblock %}

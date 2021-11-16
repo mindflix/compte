@@ -13,7 +13,7 @@
 <body>
   <main>
     {% set navigation = [('index', 'Accueil'), ('task', 'Tâches'), ('counting', 'Comptes')] %}
-    <nav>
+
       <div class="container-fluid">
         <div class="offcanvas offcanvas-start p-3" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
@@ -51,15 +51,21 @@
             {% endif %}
         </div>
       </div>
-    </nav>
-    <div class="container mt-3 mb-0 ">
-      <div class="d-flex navbar-light">
-      <button class="navbar-toggler mx-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      {% block header %} {% endblock %}
-    </div>
-      <hr>
+
+      <nav class="navbar navbar-light sticky-top bg-white mb-3 border-bottom">
+        <div class="container-fluid mx-3">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbarText">
+            <span class="text-primary fs-3">
+              {% block header %} {% endblock %}
+            </span>
+          </div>
+        </div>
+      </nav>
+        
+    <div class="container">
       {% block content %} {% endblock %}
     </div>
   </main>

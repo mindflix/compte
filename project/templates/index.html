@@ -3,9 +3,9 @@
 
 {% block header %}
   {% if g.user %}
-  <h1 class="mb-0">Bienvenue {{ g.user['username'].capitalize() }} au 34 St-Catherine</h1>
+  Bonjour {{ g.user['username'].capitalize() }} !
   {% else %}
-  <h1 class="mb-0">Bienvenue au 34 St-Catherine</h1>
+  Bienvenue
   {% endif %}
 {% endblock %}
 

@@ -1,6 +1,7 @@
 class Config(object):
     DEBUG = False
     TESTING = False
+    
     DB = 'data/database.db'
 
 
