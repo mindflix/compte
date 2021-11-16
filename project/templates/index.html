@@ -41,14 +41,14 @@
         <div class="h-100 p-5 text-white bg-dark rounded-3">
           <h2>Consulter les Tâches</h2>
           <p>Pour enfin gagner contre votre mari.</p>
-          <button class="btn btn-outline-light" type="button">Consulter</button>
+          <a class="btn btn-outline-light" href="{{ url_for('task') }}" role="button">Consulter</a>
         </div>
       </div>
       <div class="col-md-6">
         <div class="h-100 p-5 bg-light border rounded-3">
           <h2>Faire les Comptes</h2>
           <p>Pour réaliser que vous n'avez plus d'argent. (et s'il en reste, emmène-moi à sephora, je saurai l'utiliser).</p>
-          <button class="btn btn-outline-secondary" type="button">Ajouter vos dépenses</button>
+          <a class="btn btn-outline-secondary" href="{{ url_for('counting') }}" role="button">Ajouter vos dépenses</a>
         </div>
       </div>
     </div>

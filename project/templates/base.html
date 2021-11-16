@@ -53,15 +53,15 @@
       </div>
 
       <nav class="navbar navbar-light sticky-top bg-white mb-3 border-bottom">
-        <div class="container-fluid mx-3">
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <div class="container-fluid">
+          <button class="navbar-toggler me-3 mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div id="navbarText">
-            <span class="text-primary fs-3">
-              {% block header %} {% endblock %}
-            </span>
-          </div>
+            <div class="me-auto">
+              <span class="text-primary fs-3">
+                {% block header %} {% endblock %}
+              </span>
+            </div>
         </div>
       </nav>
         

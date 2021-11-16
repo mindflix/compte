@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+Mettre à jour
+{% endblock %}
+
+{% block content %}
+    <div class="col-xs-12 col-md-6 col-lg-4 mt-3">
+        <form method="post">
+            <a class="btn btn-outline-primary mb-3" href="{{ url_for('task') }}" role="button">Revenir à l'ensemble des tâches</a>
+            <div class="mb-3">
+                <label for="title" class="form-label">Titre</label>
+                <input class="form-control" placeholder="Entrer un titre..." name="title" id="title" value="{{ request.form['title'] or task['title'] }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="body" class="form-label">Description</label>
+                <textarea class="form-control" placeholder="Entrer une description de cette tâche..." name="body" id="body" style="height: 100px">{{ request.form['body'] or task['body'] }}</textarea>
+            </div>
+            <div class="d-grid mb-2">
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </div>
+        </form>
+        <form class="d-grid" action="{{ url_for('task.delete', id=task['id']) }}" method="post">
+            <input class="btn btn-outline-danger" type="submit" value="Supprimer" onclick="return confirm('Vous êtes sûr ?');">
+        </form>
+    </div>
+    
+{% endblock %}

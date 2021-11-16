@@ -6,15 +6,13 @@ Tâches
 {% endblock %}
 
 {% block content %}
-    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+    <div class="mb-3">
         <a role="button" href="task/create" class="btn btn-primary">Créer une tâche</a>
-        <button type="button" class="btn btn-outline-primary">Modifier</button>
-        <button type="button" class="btn btn-outline-primary">Supprimer</button>
     </div>
-    <div class="overflow-scroll" style="max-height: 80vh;">
+    <div class="overflow-scroll" style="max-height: 70vh;">
       <div class="list-group">
         {% for task in tasks %}
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{{ url_for('task.update', id=task['id']) }}" class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ task['title'] }}</h5>
             <small class="text-muted">{{ task['created'] }}</small>
