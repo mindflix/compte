@@ -22,6 +22,7 @@ python3 --version
 #### Installation de l'outil
 
 ```console
+cd compte
 pip install virtualenv
 ```
 
