@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+Lancement du défi
+{% endblock %}
+
+{% block content %}
+<main>
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Sélectionner votre partenaire</option>
+        {% for user in users %}
+        <option value="1">{{ user['username'].upper() }}</option>
+        {% endfor %}
+      </select>
+</main>
+
+{% endblock %}

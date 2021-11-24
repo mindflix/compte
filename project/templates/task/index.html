@@ -6,20 +6,21 @@ Tâches
 {% endblock %}
 
 {% block content %}
-    <div class="mb-3">
-        <a role="button" href="{{ url_for('task.create') }}" class="btn btn-primary">Créer une tâche</a>
+<div class="d-flex flex-column h-100">
+    <div class="btn-group col-3 bg-white">
+      <a role="button" href="{{ url_for('task.create') }}" class="btn btn-primary">Ajouter une tâche</a>
     </div>
-    <div class="overflow-scroll" style="max-height: 70vh;">
-      <div class="list-group">
-        {% for task in tasks %}
-        <a href="{{ url_for('task.update', id=task['id']) }}" class="list-group-item list-group-item-action">
-            <h5 class="mb-1">{{ task['title'] }}</h5>
-          <p class="mb-1">{{ task['body'] }}</p>
-          <div class="d-flex w-100 justify-content-between">  
-            <small class="text-muted">{{ task['username'] }}</small>
-            <small class="text-muted">{{ task['created'].strftime('%X %d/%m/%y') }}</small>
-          </div>
-          </a>
-        {% endfor %}
-    </div>
+    <div class="list-group my-3 overflow-auto" style="height: 80%;">
+      {% for task in tasks %}
+      <a href="{{ url_for('task.update', id=task['id']) }}" class="list-group-item list-group-item-action">
+        <h5 class="mb-1">{{ task['title'] }}</h5>
+        <p class="mb-1">{{ task['body'] }}</p>
+        <div class="d-flex w-100 justify-content-between">  
+          <small class="text-muted">{{ task['username'] }}</small>
+          <small class="text-muted">{{ task['created'].strftime('%X %d/%m/%y') }}</small>
+        </div>
+      </a>
+      {% endfor %}
+  </div>
+</div>
 {% endblock %}

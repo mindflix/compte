@@ -25,4 +25,8 @@ def create_app():
     app.register_blueprint(counting_bp, url_prefix="/counting")
     app.add_url_rule('/counting', endpoint='counting')
 
+    from .challenge import challenge_bp
+    app.register_blueprint(challenge_bp, url_prefix="/challenge")
+    app.add_url_rule('/challenge', endpoint='challenge')
+
     return app

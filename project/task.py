@@ -15,7 +15,7 @@ def task():
         ' FROM task p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('task/index.html', page='task', tasks=tasks)
+    return render_template('task/index.html', tasks=tasks)
 
 
 @task_bp.route('/create', methods=('GET', 'POST'))
